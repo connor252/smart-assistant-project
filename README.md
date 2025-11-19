@@ -1,4 +1,3 @@
----
 ##  目的
 
 - ライト・センサー・ホログラムなど **複数のIoTデバイスをクラウド経由で制御**
@@ -22,6 +21,3 @@
 - Python / Unity  
 - Linux  
 - Flutter or React Native  
-
----
-
