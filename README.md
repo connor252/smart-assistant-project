@@ -20,4 +20,8 @@
 **ソフトウェア**  
 - Python / Unity  
 - Linux  
-- Flutter or React Native  
+- Flutter or React Native
+
+## License
+This project is licensed under the CC BY-NC 4.0 License.
+Commercial use is prohibited.
