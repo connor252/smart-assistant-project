@@ -1,4 +1,4 @@
-# Command Specification<br>
+# Command Specification  
 **version**: 0.1  
 **status**: Draft  
 **Author**: connor252
