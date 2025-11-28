@@ -16,11 +16,37 @@ smart-assistant-projectは、
 
 ## ディレクトリ構成(予定)
 
+```
+smart-assistant-project/
+├── README.md
+├── LICENSE
+├── docs/
+│   ├── command-spec.md      # コマンド仕様書
+│   └── architecture.md      # アーキテクチャ図・設計メモ（予定）
+├── config/
+│   ├── core.yaml            # システム共通設定
+│   └── user.yaml            # ユーザーごとの設定（詠唱ワードなど）
+├── pc-controller/
+│   ├── main.py              # ローカルPC側エントリポイント
+│   ├── command_parser.py    # 詠唱・キャラ名・コマンドの解析
+│   └── action_handler.py    # 解析結果に応じた処理分岐
+├── character/
+│   ├── base_character.py    # キャラ共通の抽象クラス
+│   ├── dullahan.py          # デュラハンの挙動定義
+│   └── manager.py           # キャラの登録・切り替え管理
+├── device/
+│   ├── light/
+│   │   ├── base.py          # ライト共通IF
+│   │   └── pc_light_driver.py   # PC 上のライト制御（お試し用）
+│   └── ambience/
+│       ├── base.py          # 環境演出（BGM / エフェクト）共通IF
+│       └── pc_ambience_driver.py
+├── avatar-unity/            # 3D アバター（Unity）関連プロジェクト
+├── aws-backend/             # AWS Lambda / API Gateway / IoT Core など
+├── iot/                     # Raspberry Pi / センサー / 実機制御コード
+└── mobile-ui/               # スマホアプリ（Flutter / React Native 想定）
+```
 
-
-
-
-init
 ---
 
 ## 目標バージョンイメージ
@@ -42,6 +68,20 @@ init
 
 ## 仕様技術(予定を含む)
 
+**言語**
+- Python
+- TypeScript
+- C#
+
+**フレームワーク / ライブラリ**
+- React / React Native
+- Unity
+
+**クラウド / インフラストラクチャ**
+- AWS IoT Core
+- AWS Lambda
+- Amazon API Gateway
+- AWS CDK
 
 ---
 
