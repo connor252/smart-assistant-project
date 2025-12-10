@@ -1,151 +1,80 @@
-本サービス  
-smart-assistant-projectは、  
-「詠唱(起動ワード)→ キャラ召喚 → コマンド」  
-という異世界っぽい世界観で、電気や家電などのIoTデバイスを音声操作するスマートホームシステムです。  
-例)定義する、スライム召喚 → スライム、電気をつけて
+# Smart Assistant Project（仮称）
 
 ---
+## 概要
 
-## プロジェクト概要
-- PCやRaspberry Piをハブにして、部屋のライト・デバイスを制御
-- 「キャラ召喚」型の音声インターフェース
-- 将来的には3Dアバター(Unity)やスマホアプリからの操作も対応予定
-※ 現在は 設計・プロトタイプレベル(WIP) です。
+本プロジェクトは、音声操作によってキャラクターを呼び出し、  
+キャラクターを介してデバイスを制御するスマートホームシステムです。  
 
----
+操作は **「キャラ名 + コマンド」** を基本とし、  
+アクティブなキャラクターに対して命令を行うことで動作します。
 
-## ディレクトリ構成(予定)
-
-```
-smart-assistant-project/
-├── README.md
-├── LICENSE
-├── docs/
-│   ├── command-spec.md      # コマンド仕様書
-│   └── architecture.md      # アーキテクチャ図・設計メモ（予定）
-├── config/
-│   ├── core.yaml            # システム共通設定
-│   └── user.yaml            # ユーザーごとの設定（詠唱ワードなど）
-├── pc-controller/
-│   ├── main.py              # ローカルPC側エントリポイント
-│   ├── command_parser.py    # 詠唱・キャラ名・コマンドの解析
-│   └── action_handler.py    # 解析結果に応じた処理分岐
-├── character/
-│   ├── base_character.py    # キャラ共通の抽象クラス
-│   ├── dullahan.py          # デュラハンの挙動定義
-│   └── manager.py           # キャラの登録・切り替え管理
-├── device/
-│   ├── light/
-│   │   ├── base.py          # ライト共通IF
-│   │   └── pc_light_driver.py   # PC 上のライト制御（お試し用）
-│   └── ambience/
-│       ├── base.py          # 環境演出（BGM / エフェクト）共通IF
-│       └── pc_ambience_driver.py
-├── avatar-unity/            # 3D アバター（Unity）関連プロジェクト
-├── aws-backend/             # AWS Lambda / API Gateway / IoT Core など
-├── iot/                     # Raspberry Pi / センサー / 実機制御コード
-└── mobile-ui/               # スマホアプリ（Flutter / React Native 想定）
-```
+また、複数のキャラクターを設定・管理でき、  
+キャラクターごとに異なる振る舞いや役割を持たせることが可能です。
 
 ---
+## 目的
 
-## 目標バージョンイメージ
-
-- **v1**: 
-  - PC上で音声コマンド → ライト(または疑似ライト)のON/OFF
-  - 詠唱 + キャラ名 + コマンドの一連のフローが動く状態
-
-- **v2**: 
-  - Raspberry PiやLEDテープなどの実機IoTデバイス連携
-  - AWS(IoT Core/Lambda/API Gateway)経由で制御
-
-- **v3**: 
-  - 3Dキャラ(Unity)表示
-  - キャラごとに演出や応答が変わる
-  - スマホアプリからの操作・ウィジェット連携
+本プロジェクトは、Python / AWS / IoT / アーキテクチャ設計の学習および
+個人使用、ポートフォリオ作成を目的に個人開発しています。
 
 ---
+## 現在の実装状況
 
-## 仕様技術(予定を含む)
+**随時更新します。**
 
-**言語**
+---
+## v1
+
+本バージョンでは、実機を使用せず PC 上でのデモ実行を目的とします。
+
+- 音声入力による詠唱・キャラ呼び出し
+- キャラ状態管理（召喚中 / 待機中）
+- コマンド解析・実行フロー
+- PC上でのライト演出（エミュレーション）
+- モニター上でのキャラ表示（Unity / 動画演出）
+- YAMLによる設定管理
+- 拡張を前提とした設計
+
+設計・ロジック・アーキテクチャの検証を主目的とします。
+
+## v2
+
+v2 では、v1 の設計を維持したまま、実機デバイスとの連携を行います。
+
+- Raspberry Pi + LED 実制御
+- ライトアニメーション（色変更 / 呼吸 / 流れる演出）
+- 人感センサー・カーテン等のIoT拡張
+- ホログラムファン等への拡張対応
+- AWS IoT Core との接続
+- スマホアプリによる基本操作
+
+PC依存から脱却し、実際のデバイス制御をします。
+
+## v3
+
+v3では、日常生活で問題なく使えるレベルを目標として作っていきます。  
+個人利用を前提とした完成形バージョンです。
+
+- 複数キャラの同時管理
+- キャラごとのパブリック / プライベート機能分離
+- 実運用を想定した機能整理・制限
+- 3Dキャラのモーション強化
+- 長時間運用
+
+---
+## 使用技術
+
 - Python
-- TypeScript
-- C#
-
-**フレームワーク / ライブラリ**
-- React / React Native
-- Unity
-
-**クラウド / インフラストラクチャ**
-- AWS IoT Core
-- AWS Lambda
-- Amazon API Gateway
-- AWS CDK
+- AWS
+- Raspberry Pi
 
 ---
+## ディレクトリ構造
 
+**※ セクション準備中**
+
+---
 ## ライセンス
 
-このリポジトリのコード・設定ファイル・ドキュメントは、原則として
-
-**Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**
-
-で公開しています。
-
-商用利用は禁止です。詳細は `LICENSE` を確認してください。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-
-##  目的
-
-- ライト・センサー・ホログラムなど **複数のIoTデバイスをクラウド経由で制御**
-- 音声コマンド＋人感センサーで動く “スマートルーム” を構築
-
-##  使用技術
-
-**IoT / ハードウェア**  
-- Raspberry Pi  
-- LED  
-- 人感センサー（PIR）  
-- マイク入力（音声認識）
-
-**クラウド（AWS）**  
-- AWS IoT Core  
-- AWS Lambda  
-- API Gateway  
-- DynamoDB（予定）
-
-**ソフトウェア**  
-- Python / Unity  
-- Linux  
-- Flutter or React Native
-
-## License
-This project is licensed under the CC BY-NC 4.0 License.
-Commercial use is prohibited.
+本プロジェクトは **CC BY-NC 4.0** の下で公開しています。
